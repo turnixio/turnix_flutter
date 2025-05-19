@@ -44,7 +44,7 @@ Fetch credentials:
 
 ```dart
 final creds = await TurnixIO.getIceCredentials(
-  apiKey: 'YOUR_API_KEY',
+  apiToken: 'YOUR_API_TOKEN',
   room: 'chat-room-42',
   ttl: 600,
   preferredRegion: 'us-west-2',
@@ -79,7 +79,7 @@ Example with advanced options:
 
 ```dart
 final creds = await TurnixIO.getIceCredentials(
-  apiKey: 'YOUR_API_KEY',
+  apiToken: 'YOUR_API_TOKEN',
   room: 'video-room',
   ttl: 1200,
   fixedRegion: 'eu-central-1',
@@ -100,7 +100,7 @@ Schedule refreshes by comparing `expiresAt` to `DateTime.now()`:
 final now = DateTime.now();
 final timeLeft = creds.expiresAt.difference(now);
 if (timeLeft < Duration(seconds: 30)) {
-  creds = await TurnixIO.getIceCredentials(apiKey: 'YOUR_API_KEY');
+  creds = await TurnixIO.getIceCredentials(apiToken: 'YOUR_API_TOKEN');
 }
 ```
 

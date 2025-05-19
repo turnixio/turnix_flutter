@@ -35,8 +35,8 @@ class _MyAppState extends State<MyApp> {
     });
     try {
       final fetched = await TurnixIO.getIceCredentials(
-        apiKey:
-            'YOUR_API_KEY', // <- get it on https://turnix.io/, additionally you can provide following optional parameters:
+        apiToken:
+            'YOU_API_TOKEN', // <- get it on https://turnix.io/, additionally you can provide following optional parameters:
         // fixedRegion: 'singapore',
         // preferredRegion: "singapore",
         // clientIp: "1.21.224.0",

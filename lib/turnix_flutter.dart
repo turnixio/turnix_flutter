@@ -61,13 +61,13 @@ class IceCredentials {
 class TurnixIO {
   /// Fetches ICE credentials from the Turnix backend.
   ///
-  /// [apiKey] – your Turnix-issued API key.
+  /// [apiToken] – your Turnix-issued API token.
   ///
   /// Optional parameters correspond to the query‐params documented by Turnix;
   /// they’ll be serialized in the POST body JSON. If you need to send a client
   /// IP for geofencing, provide [clientIp] and it will be set as a header.
   static Future<IceCredentials> getIceCredentials({
-    required String apiKey,
+    required String apiToken,
     String? initiatorClient,
     String? receiverClient,
     String? room,
@@ -87,7 +87,7 @@ class TurnixIO {
 
     // Build headers
     final headers = <String, String>{
-      'Authorization': 'Bearer $apiKey',
+      'Authorization': 'Bearer $apiToken',
       'Accept': 'application/json',
       'Content-Type': 'application/json',
     };
