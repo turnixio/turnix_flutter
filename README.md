@@ -1,16 +1,18 @@
 # turnix\_flutter
 
 [![pub package](https://img.shields.io/pub/v/turnix_flutter.svg)](https://pub.dev/packages/turnix_flutter)
-[![License](https://img.shields.io/pub/license/turnix_flutter.svg)](LICENSE)
+[![GitHub repo](https://img.shields.io/badge/GitHub-turnixio%2Fturnix__flutter-181717?logo=github)](https://github.com/turnixio/turnix_flutter)
 
-A Flutter plugin for fetching WebRTC ICE (STUN/TURN) credentials from the Turnix.io API, with support for advanced options like regions, TTL, client IP, and per-call parameters.
+A Flutter plugin for fetching WebRTC ICE (STUN/TURN) credentials from the Turnix.io API, with
+support for advanced options like regions, TTL, client IP, and per-call parameters.
 
 ---
 
 ## Features
 
 * Fetch STUN/TURN credentials in a single call with built-in endpoint.
-* Support for optional parameters: `initiatorClient`, `receiverClient`, `room`, `ttl`, `fixedRegion`, `preferredRegion`, `clientIp`.
+* Support for optional
+  parameters: `initiatorClient`, `receiverClient`, `room`, `ttl`, `fixedRegion`, `preferredRegion`, `clientIp`.
 * Automatic parsing of multiple URLs per ICE server.
 * Provides `expiresAt` timestamp and real-time `timeLeft` handling for seamless credential renewal.
 * Pure-Dart implementation: works on all Flutter platforms (iOS, Android, Web, Desktop).
@@ -23,7 +25,7 @@ Add `turnix_flutter` as a dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  turnix_flutter: ^0.1.2
+  turnix_flutter: ^0.1.3
 ```
 
 Then run:
@@ -43,21 +45,24 @@ import 'package:turnix_flutter/turnix_flutter.dart';
 Fetch credentials:
 
 ```dart
-final creds = await TurnixIO.getIceCredentials(
-  apiToken: 'YOUR_API_TOKEN',
-  room: 'chat-room-42',
-  ttl: 600,
-  preferredRegion: 'us-west-2',
-  clientIp: '203.0.113.5',
+
+final creds = await
+TurnixIO.getIceCredentials
+(
+apiToken: 'YOUR_API_TOKEN',
+room: 'chat-room-42',
+ttl: 600,
+preferredRegion: 'us-west-2',
+clientIp: '203.0.113.5',
 );
 
 // Configure your RTCPeerConnection:
 final pc = await createPeerConnection({
-  'iceServers': creds.iceServers.map((s) => {
-    'urls': s.urls,
-    if (s.username  != null) 'username':   s.username,
-    if (s.credential!= null) 'credential': s.credential,
-  }).toList(),
+'iceServers': creds.iceServers.map((s) => {
+'urls': s.urls,
+if (s.username != null) 'username': s.username,
+if (s.credential!= null) 'credential': s.credential,
+}).toList(),
 });
 ```
 
@@ -66,7 +71,7 @@ final pc = await createPeerConnection({
 All parameters are optional. Pass only those you need:
 
 | Parameter         | Type     | Description                                                                                                                                                                                           |
-| ----------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `initiatorClient` | `String` | An identifier for the call initiator.                                                                                                                                                                 |
 | `receiverClient`  | `String` | An identifier for the call receiver.                                                                                                                                                                  |
 | `room`            | `String` | A room or session identifier to scope TURN URLs.                                                                                                                                                      |
@@ -78,12 +83,20 @@ All parameters are optional. Pass only those you need:
 Example with advanced options:
 
 ```dart
-final creds = await TurnixIO.getIceCredentials(
-  apiToken: 'YOUR_API_TOKEN',
-  room: 'video-room',
-  ttl: 1200,
-  fixedRegion: 'eu-central-1',
-  clientIp: '203.0.113.8', // determines region if no fixed/preferred
+
+final creds = await
+TurnixIO.getIceCredentials
+(
+apiToken: 'YOUR_API_TOKEN',
+room: 'video-room',
+ttl: 1200,
+fixedRegion: 'eu-central-1',
+clientIp
+:
+'
+203.0.113.8
+'
+, // determines region if no fixed/preferred
 );
 ```
 
@@ -97,20 +110,23 @@ The `IceCredentials` object exposes:
 Schedule refreshes by comparing `expiresAt` to `DateTime.now()`:
 
 ```dart
+
 final now = DateTime.now();
-final timeLeft = creds.expiresAt.difference(now);
-if (timeLeft < Duration(seconds: 30)) {
-  creds = await TurnixIO.getIceCredentials(apiToken: 'YOUR_API_TOKEN');
+final timeLeft = creds.expiresAt.difference(now);if (
+timeLeft < Duration(seconds: 30)) {
+creds = await TurnixIO.getIceCredentials(apiToken: 'YOUR_API_TOKEN');
 }
 ```
 
 ## Example App
 
-See the `example/` directory for a Flutter demo app with UI, countdown timer, and advanced options panel.
+See the `example/` directory for a Flutter demo app with UI, countdown timer, and advanced options
+panel.
 
 ## Contributing
 
-Contributions and issues are welcome! Please open a PR or issue on [GitHub](https://github.com/turnix/turnix_flutter).
+Contributions and issues are welcome! Please open a PR or issue
+on [GitHub](https://github.com/turnix/turnix_flutter).
 
 ## License
 
