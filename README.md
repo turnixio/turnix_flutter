@@ -25,7 +25,7 @@ Add `turnix_flutter` as a dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  turnix_flutter: ^0.1.3
+  turnix_flutter: ^0.1.4
 ```
 
 Then run:
@@ -126,7 +126,7 @@ panel.
 ## Contributing
 
 Contributions and issues are welcome! Please open a PR or issue
-on [GitHub](https://github.com/turnix/turnix_flutter).
+on [GitHub](https://github.com/turnixio/turnix_flutter).
 
 ## License
 
