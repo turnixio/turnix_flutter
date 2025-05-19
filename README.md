@@ -118,9 +118,6 @@ This package is released under the MIT License. See [LICENSE](LICENSE) for detai
 
 ---
 
-\<details>
-\<summary>Full MIT License\</summary>
-
 ```
 MIT License
 
@@ -145,4 +142,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
 
-\</details>
