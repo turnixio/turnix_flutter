@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. This project adheres to [Semantic Versioning](https://semver.org/).
 
+## \[0.1.1] - 2025-05-19
+
+### Changed
+
+* Renamed `apiKey` parameter to `apiToken` across all methods and documentation for consistency across platforms and better clarity.
+
 ## \[0.1.0] - 2025-05-19
 
 ### Added
@@ -12,9 +18,9 @@ All notable changes to this project will be documented in this file. This projec
 * **Dart extension**: added `IceCredentialsX` extension with `timeLeft` and `isExpired` convenience getters.
 * **Example app update**: UI now includes:
 
-    * “Refresh” button in the AppBar.
-    * Real-time countdown of credentials’ TTL.
-    * `ExpansionTile` panel for advanced options input.
+  * “Refresh” button in the AppBar.
+  * Real-time countdown of credentials’ TTL.
+  * `ExpansionTile` panel for advanced options input.
 * **README improvements**: clarified installation, usage, and license sections; added badges and metadata.
 
 ## \[0.0.1] - 2025-05-01
