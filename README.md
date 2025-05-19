@@ -23,7 +23,7 @@ Add `turnix_flutter` as a dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  turnix_flutter: ^0.1.1
+  turnix_flutter: ^0.1.2
 ```
 
 Then run:
