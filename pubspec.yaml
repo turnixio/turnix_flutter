@@ -3,7 +3,7 @@ description: >
   A Flutter plugin for fetching WebRTC ICE (STUN/TURN) credentials
   from the Turnix.io API, with support for advanced options
   like regions, TTL, client IP, and per-call parameters.
-version: 0.1.1
+version: 0.1.2
 homepage: https://turnix.io
 
 environment:
