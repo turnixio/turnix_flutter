@@ -26,6 +26,8 @@ class _MyAppState extends State<MyApp> {
   void dispose() {
     _timer?.cancel();
     super.dispose();
+
+
   }
 
   Future<void> _fetchCreds() async {

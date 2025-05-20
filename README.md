@@ -25,7 +25,7 @@ Add `turnix_flutter` as a dependency in your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  turnix_flutter: ^0.1.4
+  turnix_flutter: ^0.1.5
 ```
 
 Then run:
@@ -45,24 +45,26 @@ import 'package:turnix_flutter/turnix_flutter.dart';
 Fetch credentials:
 
 ```dart
-
-final creds = await
-TurnixIO.getIceCredentials
-(
-apiToken: 'YOUR_API_TOKEN',
-room: 'chat-room-42',
-ttl: 600,
-preferredRegion: 'us-west-2',
-clientIp: '203.0.113.5',
+final creds = await TurnixIO.getIceCredentials(
+  apiToken: 'YOUR_API_TOKEN',
+  room: 'chat-room-42',
+  ttl: 600,
+  preferredRegion: 'us-west-2',
+  clientIp: '203.0.113.5',
 );
 
 // Configure your RTCPeerConnection:
 final pc = await createPeerConnection({
-'iceServers': creds.iceServers.map((s) => {
-'urls': s.urls,
-if (s.username != null) 'username': s.username,
-if (s.credential!= null) 'credential': s.credential,
-}).toList(),
+  'iceServers':
+      creds.iceServers
+          .map(
+            (s) => {
+              'urls': s.urls,
+              if (s.username != null) 'username': s.username,
+              if (s.credential != null) 'credential': s.credential,
+            },
+          )
+          .toList(),
 });
 ```
 
@@ -83,20 +85,12 @@ All parameters are optional. Pass only those you need:
 Example with advanced options:
 
 ```dart
-
-final creds = await
-TurnixIO.getIceCredentials
-(
-apiToken: 'YOUR_API_TOKEN',
-room: 'video-room',
-ttl: 1200,
-fixedRegion: 'eu-central-1',
-clientIp
-:
-'
-203.0.113.8
-'
-, // determines region if no fixed/preferred
+final creds = await TurnixIO.getIceCredentials(
+  apiToken: 'YOUR_API_TOKEN',
+  room: 'video-room',
+  ttl: 1200,
+  fixedRegion: 'eu-central-1',
+  clientIp: '203.0.113.8', // determines region if no fixed/preferred
 );
 ```
 
@@ -110,10 +104,9 @@ The `IceCredentials` object exposes:
 Schedule refreshes by comparing `expiresAt` to `DateTime.now()`:
 
 ```dart
-
-final now = DateTime.now();
-final timeLeft = creds.expiresAt.difference(now);if (
-timeLeft < Duration(seconds: 30)) {
+    final now = DateTime.now();
+final timeLeft = creds.expiresAt.difference(now);
+if (timeLeft < Duration(seconds: 30)) {
 creds = await TurnixIO.getIceCredentials(apiToken: 'YOUR_API_TOKEN');
 }
 ```
@@ -157,4 +150,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
-
